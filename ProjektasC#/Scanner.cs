@@ -20,7 +20,6 @@ class Scanner
     public void start()
     {
         Task.Run(() => readFiles());
-        // Simulate some work in the main thread
         Console.WriteLine($"Scanner {pipeName} is running...");
      
     }

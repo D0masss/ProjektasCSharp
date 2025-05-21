@@ -16,7 +16,6 @@ class Master
         {
             Task.Run(() => listenToPipe(pipeName));
         }
-        // Simulate some work in the main thread
         Console.WriteLine("Master is running...");
       
     }

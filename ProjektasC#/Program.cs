@@ -12,8 +12,8 @@ class Program
         });
         thread.Start();
 
-        Scanner scannerA = new Scanner("C:\\Users\\smiki\\Desktop\\univero darbai", "agent1");
-        Scanner scannerB = new Scanner("C:\\Users\\smiki\\Desktop\\univero darbai", "agent2");
+        Scanner scannerA = new Scanner("C:\\Users\\smiki\\Desktop\\univero darbai\\objektinis\\test", "agent1");
+        Scanner scannerB = new Scanner("C:\\Users\\smiki\\Desktop\\univero darbai\\objektinis\\test", "agent2");
         
         Thread threadA = new Thread(() =>
         {
