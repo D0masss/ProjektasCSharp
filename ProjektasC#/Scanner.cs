@@ -23,7 +23,7 @@ class Scanner
         Task.Run(() => readFiles());
         // Simulate some work in the main thread
         Console.WriteLine($"Scanner {pipeName} is running...");
-        Console.ReadLine();
+     
     }
 
     private void readFiles()
@@ -51,7 +51,7 @@ class Scanner
 
     }
 
-    private void assignCPUCore()
+    public void assignCPUCore()
     {
         Process currentProcess = Process.GetCurrentProcess();
         ProcessThread thread = currentProcess.Threads[0];

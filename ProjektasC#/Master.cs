@@ -17,7 +17,7 @@ class Master
         }
         // Simulate some work in the main thread
         Console.WriteLine("Master is running...");
-        Console.ReadLine();
+      
     }
 
     private void listenToPipe(string pipeName)
