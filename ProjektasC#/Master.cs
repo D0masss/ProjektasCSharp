@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Pipes;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,21 @@ class Master
                     Console.WriteLine(line);
                 }
             }
+        }
+    }
+
+    public void setAffinity(int core)
+    {
+        if (core < 0 || core >= Environment.ProcessorCount)
+        {
+            throw new ArgumentOutOfRangeException(nameof(core), "Invalid core number.");
+        }
+        else
+        {
+            Process currentProcess = Process.GetCurrentProcess();
+            IntPtr mask = (IntPtr)(1 << core);
+            currentProcess.ProcessorAffinity = mask;
+            Console.WriteLine($"Master is running on core {core}.");
         }
     }
 }

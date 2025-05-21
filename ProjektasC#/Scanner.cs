@@ -15,7 +15,6 @@ class Scanner
     {
         this.directoryPath = directoryPath;
         this.pipeName = pipeName;
-        assignCPUCore();
     }
 
     public void start()
@@ -51,10 +50,17 @@ class Scanner
 
     }
 
-    public void assignCPUCore()
+    public void setAffinity(int core)
     {
-        Process currentProcess = Process.GetCurrentProcess();
-        ProcessThread thread = currentProcess.Threads[0];
-        thread.ProcessorAffinity = (IntPtr)(1 << 0);
+        if (core < 0 || core >= Environment.ProcessorCount)
+        {
+            throw new ArgumentOutOfRangeException(nameof(core), "Invalid core number.");
+        }else
+        {
+            Process currentProcess = Process.GetCurrentProcess();
+            IntPtr mask = (IntPtr)(1 << core);
+            currentProcess.ProcessorAffinity = mask;
+            Console.WriteLine($"Scanner {pipeName} is running on core {core}.");
+        }
     }
 }
